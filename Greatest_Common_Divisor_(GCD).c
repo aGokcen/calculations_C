@@ -1,9 +1,9 @@
-/*GDC CALCULATOR       V2    */
+/*GCD CALCULATOR       V2    */
 /*Alpaslan GOKCEN 11.04.2014 */
 #include<stdio.h>
 int main()
 {
-	int n1,n2,min,i,_gdc=1;
+	int n1,n2,min,i,_gcd=1;
 	printf("Enter first Number:");
 	scanf("%d",&n1);
 	printf("Enter second Number:");
@@ -13,14 +13,14 @@ int main()
 	{
 		while (n1%i==0 && n2%i==0)
 			{
-				_gdc*=i;
+				_gcd*=i;
 				n1/=i;
 				n2/=i;
 			}
 	}
-	if(_gdc!=1)
-		printf("GDC:%d\n",_gdc);
+	if(_gcd!=1)
+		printf("GDC:%d\n",_gcd);
 	else
-		printf("No GDC");
+		printf("No GCD");
 	return 0;
 }
