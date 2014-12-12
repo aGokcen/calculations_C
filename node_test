@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node {
+	int element;
+	node *next;
+	node *current;
+} node;
+
+void initialize(node *);
+void add(node *,int);
+void add_end(node *,int);
+
+int main()
+{
+	node list;
+	initialize(&list);
+
+}
+
+void initialize(node *p)
+{
+	p=(node *)malloc(sizeof(node));
+	p->next=NULL;
+	p->current=p;
+}
+
+void add(node *p,int element)
+{
+	node *q;
+	q->element=element;
+	q=(node *)malloc(sizeof(node));
+	q->next=p;
+	p=q;
+}
+
+void add_end(node *p,int element)
+{
+	node *q;
+	q=(node *)malloc(sizeof(node));
+	p->current->element=element;
+	q->next=NULL;
+	p->current=q;
+}
+
