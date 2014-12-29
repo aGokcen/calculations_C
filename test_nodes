@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+struct node{
+	int x;
+	struct node *Next;
+};
+
+
+
+typedef struct node Node;
+typedef node *NodePtr;
+
+NodePtr getnode(void);
+void add_node(NodePtr *p,int x);
+void print_list(NodePtr *p);
+int delete_node(NodePtr *p);
+
+int main()
+{
+	NodePtr list;
+	add_node(&list,5);
+	add_node(&list,6);
+	add_node(&list,7);
+	add_node(&list,8);
+	printf("%d deleted \n",delete_node(&list));
+	print_list(&list);
+	getchar();
+	getchar();
+}
+
+NodePtr getnode(void)
+{
+	NodePtr p=(NodePtr)malloc(sizeof(Node));
+	return p;
+}
+
+void add_node(NodePtr *p,int x)
+{
+	NodePtr q;
+	q=getnode();
+	if(*p==NULL)
+	{
+		q->Next=NULL;
+	}
+	q->x=x;
+	q->Next=*p;
+	*p=q;
+}
+
+int delete_node(NodePtr *p)
+{
+	int x;
+	NodePtr q;
+	q=*p;
+	x=q->x;
+	*p=q->Next;
+	free(q);
+	return x;
+}
+void print_list(NodePtr *p)
+{
+	NodePtr q;
+	q=*p;
+	while(q!=NULL)
+	{
+		printf("%d\n",q->x);
+		q=q->Next;
+	}
+}
+int search_node(NodePtr *p,int x)
+{
+	NodePtr q;
+	q=*p;
+	while(q!=NULL)
+	{
+		if(q->x==x)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
